@@ -205,6 +205,6 @@
   // ==================================================
 
 
-function log () {
-  console.log('This is log function')
-}
+function showAlert () {
+  alert('External message')
+} 
