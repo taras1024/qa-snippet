@@ -228,7 +228,18 @@ articleImages.forEach(function (currentImg)  {
 // =======================links======================
 const linkInfoBlock = document.createElement('div')
 linkInfoBlock.id = 'linkInfoBlock'
-linkInfoBlock.style.cssText = "position: fixed; top: 50%; left:10%; border: 5px solid orange; background-color: #fff; display: none; z-index: 1000; padding: 10px;"
+linkInfoBlock.style.cssText = `
+  position: fixed; 
+  top: 0; 
+  left:0; 
+  border: 5px solid orange; 
+  background-color: #fff; 
+  display: none; 
+  z-index: 1000; 
+  padding: 10px; 
+  overflow-y: scroll;
+  height: 60px;`
+  
 document.querySelector('body').appendChild(linkInfoBlock)
 const links = document.querySelectorAll('.layout-content a')
 links.forEach(link => {
