@@ -212,7 +212,9 @@ articleImages.forEach(function (currentImg)  {
             currentImg.parentElement.append(imgInfoBlock)
             currentImg.parentElement.style.position = 'relative'
       } else {
-          alert('ERROR');
+          // alert('ERROR')
+          console.log(`***ERROR:GET IMG INFO BY URL: ${currentImg.src}`)
+
       }
       }
   };
