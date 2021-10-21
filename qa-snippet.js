@@ -284,7 +284,9 @@ function showImgInfo(currentImg) {
                 currentImg.parentElement.appendChild(imgInfoBlock)
                 currentImg.parentElement.style.position = 'relative'
             } else {
-                alert('ERROR')
+                // alert('ERROR')
+                console.log(`***ERROR:GET IMG INFO BY URL: ${currentImg.src}`)
+
             }
         }
     };
