@@ -150,7 +150,7 @@ const metaP = document.createElement('p')
 
 const pageTitle = document.querySelector('title') ? document.querySelector('title').innerText : "undefined"
 const metaDescription = document.querySelector('meta[name=description]') ? document.querySelector('meta[name=description]').content : "undefined"
-const metaOgTitle = document.querySelector("meta[property='og:title']") ? querySelector("meta[property='og:title']").content : "undefined"
+const metaOgTitle = document.querySelector("meta[property='og:title']") ? document.querySelector("meta[property='og:title']").content : "undefined"
 const metaOgDescription = document.querySelector("meta[property='og:description']") ? document.querySelector("meta[property='og:description']").content : "undefined"
 
 // const pageTitle = document.querySelector('title').innerText || "undefined"
