@@ -1,14 +1,14 @@
 const main = document.querySelector('.layout-content')
-const images = main.querySelectorAll('img') 
-images.forEach(img => {img.loading = 'eager'})
+const images = main.querySelectorAll('img')
+images.forEach(img => { img.loading = 'eager' })
 
 const bodyNode = document.querySelector('body')
 
 window.scrollTo({
-    top: bodyNode.scrollHeight,
-    left: 0,
-    behavior: 'smooth'
- });  
+  top: bodyNode.scrollHeight,
+  left: 0,
+  behavior: 'smooth'
+});
 
 
 
@@ -98,7 +98,7 @@ let highlightStyleStr = `
       font-weight: 600;
       font-size: 22px;
   }
-` 
+`
 let highlightStyles = document.createElement('style')
 highlightStyles.type = 'text/css'
 highlightStyles.className = 'qa'
@@ -111,9 +111,9 @@ document.getElementsByTagName("head")[0].appendChild(highlightStyles);
 let arrayScripts = document.querySelectorAll("script");
 let fireTags = '';
 arrayScripts.forEach(element => {
-    if (element.getAttribute('type') == "application/json") {
-            fireTags = element;
-    }
+  if (element.getAttribute('type') == "application/json") {
+    fireTags = element;
+  }
 });
 
 let jsonFile, taxonomyTags, taxonomyStr
@@ -122,8 +122,8 @@ if (!jsonFile.nppe_ttt_datalayer) {
   taxonomyTags = ""
   taxonomyStr = "undefined"
 } else {
-    taxonomyTags = jsonFile.nppe_ttt_datalayer.init.firetags.entityTaxonomy;
-    taxonomyStr = JSON.stringify(taxonomyTags, null, 6);
+  taxonomyTags = jsonFile.nppe_ttt_datalayer.init.firetags.entityTaxonomy;
+  taxonomyStr = JSON.stringify(taxonomyTags, null, 6);
 }
 //   ============================================================
 
@@ -148,10 +148,15 @@ metaDiv.id = 'metaInfo'
 metaDiv.innerHTML = `<h2>Meta Info</h2>`
 const metaP = document.createElement('p')
 
-const pageTitle = document.querySelector('title').innerText || "undefined"
-const metaDescription = document.querySelector('meta[name=description]').content || "undefined"
-const metaOgTitle = document.querySelector("meta[property='og:title']").content || "undefined"
-const metaOgDescription = document.querySelector("meta[property='og:description']").content || "meta og:description - undefined"
+const pageTitle = document.querySelector('title') ? document.querySelector('title').innerText : "undefined"
+const metaDescription = document.querySelector('meta[name=description]') ? document.querySelector('meta[name=description]').content : "undefined"
+const metaOgTitle = document.querySelector("meta[property='og:title']") ? querySelector("meta[property='og:title']").content : "undefined"
+const metaOgDescription = document.querySelector("meta[property='og:description']") ? document.querySelector("meta[property='og:description']").content : "undefined"
+
+// const pageTitle = document.querySelector('title').innerText || "undefined"
+// const metaDescription = document.querySelector('meta[name=description]').content || "undefined"
+// const metaOgTitle = document.querySelector("meta[property='og:title']").content || "undefined"
+// const metaOgDescription = document.querySelector("meta[property='og:description']").content || "meta og:description - undefined"
 
 
 metaP.innerText = `
@@ -162,7 +167,7 @@ metaP.innerText = `
   og:title -> ${metaOgTitle}
   
   og:description -> ${metaOgDescription}
-` 
+`
 metaDiv.appendChild(metaP)
 
 topInfoBlock.appendChild(taxonomyDiv)
@@ -183,48 +188,48 @@ const mainContainer = document.querySelector('.layout-content')
 //   const articleImages = articleContent.getElementsByTagName('img')
 const articleImages = mainContainer.querySelectorAll('img')
 
-articleImages.forEach(function (currentImg)  {
+articleImages.forEach(function (currentImg) {
   let roundedString, imgSizeKb
   var xhr = new XMLHttpRequest();
   xhr.open('HEAD', currentImg.src, true);
-  xhr.onreadystatechange = function(){
-  if ( xhr.readyState == 4 ) {
-      if ( xhr.status == 200 ) {
-          roundedString = (xhr.getResponseHeader('Content-Length')/1024).toFixed(2);
-          imgSizeKb = Number(roundedString);
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4) {
+      if (xhr.status == 200) {
+        roundedString = (xhr.getResponseHeader('Content-Length') / 1024).toFixed(2);
+        imgSizeKb = Number(roundedString);
 
-          const imgProps = {
-              imgSrc: currentImg.src,
-              width: currentImg.width,
-              height: currentImg.height,
-              alt: currentImg.alt,
-              imgFileSize: imgSizeKb 
-            }
-            
-            const imgInfoBlock = document.createElement('p')
-            imgInfoBlock.className = 'qa-p'
-            imgInfoBlock.innerText = `
+        const imgProps = {
+          imgSrc: currentImg.src,
+          width: currentImg.width,
+          height: currentImg.height,
+          alt: currentImg.alt,
+          imgFileSize: imgSizeKb
+        }
+
+        const imgInfoBlock = document.createElement('p')
+        imgInfoBlock.className = 'qa-p'
+        imgInfoBlock.innerText = `
               alt: ${imgProps.alt}
               size: ${imgProps.imgFileSize} Kb
               natural width: ${imgProps.width} px
               natural height: ${imgProps.height} px
             `
-            currentImg.parentElement.append(imgInfoBlock)
-            currentImg.parentElement.style.position = 'relative'
+        currentImg.parentElement.append(imgInfoBlock)
+        currentImg.parentElement.style.position = 'relative'
       } else {
-          // alert('ERROR')
-          console.log(`***ERROR:GET IMG INFO BY URL: ${currentImg.src}`)
+        // alert('ERROR')
+        console.log(`***ERROR:GET IMG INFO BY URL: ${currentImg.src}`)
 
       }
-      }
+    }
   };
   xhr.send(null);
 
   // const img = await fetch(currentImg.currentSrc);
   // const blob = await img.blob();
-  
- 
-});  
+
+
+});
 // ======================================================
 
 // =======================links======================
@@ -241,71 +246,71 @@ linkInfoBlock.style.cssText = `
   padding: 10px; 
   overflow-y: scroll;
   height: 60px;`
-  
+
 document.querySelector('body').appendChild(linkInfoBlock)
 const links = document.querySelectorAll('.layout-content a')
 links.forEach(link => {
-    link.addEventListener("mouseover", e => {
-        linkInfoBlock.innerText = e.target.outerHTML
-        linkInfoBlock.style.display = 'block'
-    })
-    link.addEventListener("mouseout", e => {
-      linkInfoBlock.innerText = ""
-      linkInfoBlock.style.display = 'none'    
+  link.addEventListener("mouseover", e => {
+    linkInfoBlock.innerText = e.target.outerHTML
+    linkInfoBlock.style.display = 'block'
+  })
+  link.addEventListener("mouseout", e => {
+    linkInfoBlock.innerText = ""
+    linkInfoBlock.style.display = 'none'
   })
 })
 // ================================================
 
 
 function showImgInfo(currentImg) {
-    let roundedString, imgSizeKb
-    var xhr = new XMLHttpRequest()
-    xhr.open('HEAD', currentImg.currentSrc, true)
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4) {
-            if (xhr.status == 200) {
-                roundedString = (xhr.getResponseHeader('Content-Length') / 1024).toFixed(2)
-                imgSizeKb = Number(roundedString);
+  let roundedString, imgSizeKb
+  var xhr = new XMLHttpRequest()
+  xhr.open('HEAD', currentImg.currentSrc, true)
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4) {
+      if (xhr.status == 200) {
+        roundedString = (xhr.getResponseHeader('Content-Length') / 1024).toFixed(2)
+        imgSizeKb = Number(roundedString);
 
-                const imgProps = {
-                    imgSrc: currentImg.currentSrc,
-                    width: currentImg.naturalWidth,
-                    height: currentImg.naturalHeight,
-                    alt: currentImg.alt,
-                    imgFileSize: imgSizeKb
-                }
+        const imgProps = {
+          imgSrc: currentImg.currentSrc,
+          width: currentImg.naturalWidth,
+          height: currentImg.naturalHeight,
+          alt: currentImg.alt,
+          imgFileSize: imgSizeKb
+        }
 
-                const imgInfoBlock = document.createElement('p')
-                imgInfoBlock.className = 'qa-p'
-                imgInfoBlock.innerText = `
+        const imgInfoBlock = document.createElement('p')
+        imgInfoBlock.className = 'qa-p'
+        imgInfoBlock.innerText = `
                 alt: ${imgProps.alt || 'undefined'} 
                 size: ${imgProps.imgFileSize} Kb
                 natural width: ${imgProps.width} px
                 natural height: ${imgProps.height} px
               `
-                currentImg.parentElement.appendChild(imgInfoBlock)
-                currentImg.parentElement.style.position = 'relative'
-            } else {
-                // alert('ERROR')
-                console.log(`***ERROR:GET IMG INFO BY URL: ${currentImg.src}`)
+        currentImg.parentElement.appendChild(imgInfoBlock)
+        currentImg.parentElement.style.position = 'relative'
+      } else {
+        // alert('ERROR')
+        console.log(`***ERROR:GET IMG INFO BY URL: ${currentImg.src}`)
 
-            }
-        }
-    };
-    xhr.send(null)
+      }
+    }
+  };
+  xhr.send(null)
 }
 
 
-function showTeaser(){ 
-    const teaserUrl = document.querySelector('meta[property="og:image"]')["content"]  
-    const img = new Image()
-    img.onload = function(){
-        const teaserDiv = document.createElement('div')
-        teaserDiv.id = 'teaserInfo'
-        teaserDiv.innerHTML = `<h2>Teaser Info</h2>`
-        teaserDiv.appendChild(this)
-        document.getElementById('topInfoBlock').appendChild(teaserDiv)  
-        showImgInfo(this)  
-    }
-    img.src = teaserUrl;
+function showTeaser() {
+  const teaserUrl = document.querySelector('meta[property="og:image"]')["content"]
+  const img = new Image()
+  img.onload = function () {
+    const teaserDiv = document.createElement('div')
+    teaserDiv.id = 'teaserInfo'
+    teaserDiv.innerHTML = `<h2>Teaser Info</h2>`
+    teaserDiv.appendChild(this)
+    document.getElementById('topInfoBlock').appendChild(teaserDiv)
+    showImgInfo(this)
+  }
+  img.src = teaserUrl;
 }
