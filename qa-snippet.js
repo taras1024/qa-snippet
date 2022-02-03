@@ -1,6 +1,6 @@
 const main = document.querySelector('.layout-content')
-const images = main.querySelectorAll('img')
-images.forEach(img => { img.loading = 'eager' })
+const contentImages = main.querySelectorAll('img')
+contentImages.forEach(img => { img.loading = 'eager' })
 
 const bodyNode = document.querySelector('body')
 
@@ -9,7 +9,6 @@ window.scrollTo({
   left: 0,
   behavior: 'smooth'
 });
-
 
 
 // ========html text elements highlight============
